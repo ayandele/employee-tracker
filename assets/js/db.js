@@ -14,13 +14,13 @@ connectionLimit: 10, // Adjust the limit as needed
 // Function to get a database connection from the pool
 function getConnection() {
 return new Promise((resolve, reject) => {
-    pool.getConnection((error, connection) => {
-    if (error) {
-        reject(error);
-    } else {
-        resolve(connection);
-    }
-    });
+pool.getConnection((error, connection) => {
+if (error) {
+reject(error);
+} else {
+resolve(connection);
+}
+});
 });
 }
 
