@@ -61,56 +61,56 @@ return getConnection()
 
 // Function to add an employee
 function addEmployee() {
-  return inquirer
+return inquirer
     .prompt([
-      {
+    {
         type: 'input',
         name: 'first_name',
         message: "Enter the employee's first name:",
-      },
-      {
+    },
+    {
         type: 'input',
         name: 'last_name',
         message: "Enter the employee's last name:",
-      },
-      {
+    },
+    {
         type: 'input',
         name: 'role_id',
         message: "Enter the employee's role ID:",
-      },
-      {
+    },
+    {
         type: 'input',
         name: 'manager_id',
         message: "Enter the employee's manager ID:",
-      },
+    },
     ])
     .then((answers) => {
-      return getConnection().then((connection) => {
+    return getConnection().then((connection) => {
         return new Promise((resolve, reject) => {
-          connection.query(
+        connection.query(
             'INSERT INTO employee SET ?',
             {
-              first_name: answers.first_name,
-              last_name: answers.last_name,
-              role_id: answers.role_id,
-              manager_id: answers.manager_id,
+            first_name: answers.first_name,
+            last_name: answers.last_name,
+            role_id: answers.role_id,
+            manager_id: answers.manager_id,
             },
             (error) => {
-              connection.release();
+            connection.release();
 
-              if (error) {
+            if (error) {
                 reject(error);
-              } else {
+            } else {
                 console.log('Employee added successfully!');
                 resolve();
-              }
             }
-          );
+            }
+        );
         });
-      });
+    });
     })
     .catch((error) => {
-      console.log('An error occurred:', error);
+    console.log('An error occurred:', error);
     });
 }
 
@@ -125,5 +125,9 @@ function deleteEmployee() {
 }
 
 module.exports = {
-  manageEmployees,
+manageEmployees,
 };
+
+
+// Note to self - Remember to replace the database query placeholders 
+// (SELECT * FROM employee, INSERT INTO employee SET ?, etc.) with the appropriate queries for your database schema.
