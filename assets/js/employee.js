@@ -4,11 +4,11 @@ const { getConnection } = require('./db');
 // Function to manage employee operations
 function manageEmployees() {
 return inquirer
-    .prompt([
-    {
-        type: 'list',
-        name: 'action',
-        message: 'What would you like to do with employees?',
+.prompt([
+{
+type: 'list',
+name: 'action',
+message: 'What would you like to do with employees?',
         choices: [
         'View all employees',
         'Add an employee',
